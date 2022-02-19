@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.deposite {
+  background-color: #5da3fa;
+}
+
+.balance {
+  background-color: #02b290;
+}
+
+.withdrow {
+  background-color: #ff6666;
+}
