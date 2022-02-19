@@ -1,22 +1,19 @@
 // deposite btn
 document.getElementById("deposite-btn").addEventListener("click", ()=>{
-  // get deposite inpute and value
   const depositeInpute=document.getElementById("deposite-input")
   const depositeInputeValue=parseFloat(depositeInpute.value);
 
-  // get deposite amount tag and innterText;
-  const depositeTag=document.getElementById("deposite-amount");
-  const depositeAmount=parseFloat(depositeTag.innerText);
-
-  // get balance tag;
-  const balanceTag=document.getElementById("balance-amount")
-  const balanceAmount=parseFloat(balanceTag.innerText);
-
-  // set deposite inpute valu in balance value;
-  depositeTag.innerText=depositeAmount+depositeInputeValue;
-  balanceTag.innerText=balanceAmount+depositeInputeValue;
-  // clear inpute value;
-  depositeInpute.value=""
+  // funcation create to set deposite and balance innertext
+  function setBalanceAndDep(idName){
+    const getTag=document.getElementById(idName);
+    const getAmount=parseFloat(getTag.innerText);
+    getTag.innerText=getAmount+depositeInputeValue;
+    depositeInpute.value=""
+    
+  }
+  // funcation calling for deposite and balance
+  const depositeAmount=setBalanceAndDep("deposite-amount");
+  const balanceAmount=setBalanceAndDep("balance-amount");
 });
 
 // withdrow btn;
@@ -25,18 +22,17 @@ document.getElementById("withdrow-btn").addEventListener("click", ()=>{
   const withdrowInpute=document.getElementById("withdrow-input")
   const withdrowInputeValue=parseFloat(withdrowInpute.value);
 
-  const withdrowTag=document.getElementById("withdrow-amount");
-  const withdrowInnerText=parseFloat(withdrowTag.innerText);
+  function aktar(idName){
+    const getTag=document.getElementById(idName);
+    const getAmount=parseFloat(getTag.innerText);
+    getTag.innerText=getAmount+withdrowInputeValue;
+    withdrowInpute.value="";
+    return getAmount;
+  }
+  const withdrowAmount=aktar("withdrow-amount");
 
-  // set withdrow valu in withdrow span tag;
-  withdrowTag.innerText=withdrowInnerText+withdrowInputeValue;
-
-  // cut balance from withdrow inpute value;
   const balanceTag=document.getElementById("balance-amount")
   const balanceAmount=parseFloat(balanceTag.innerText);
-
+  console.log(balanceAmount)
   balanceTag.innerText=balanceAmount-withdrowInputeValue;
-
-  // clear inpute;
-  withdrowInpute.value="";
-})
+});
